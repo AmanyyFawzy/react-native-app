@@ -33,6 +33,11 @@ export default function Fav() {
   );
 }
 const styles = StyleSheet.create({
+  title:{
+     textAlign:'center',
+     fontSize:20,
+     marginBottom:20
+  },
   container: {
     padding: 16,
     backgroundColor: '#f9f9f9',

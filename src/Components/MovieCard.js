@@ -1,146 +1,145 @@
-
 import React from 'react';
-import { View, Image, Text, StyleSheet,TouchableOpacity } from 'react-native';
+import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AntDesign from '@expo/vector-icons/AntDesign';
-
 import { Fav } from '../Redux/Actions/FavAction';
 import { useDispatch, useSelector } from 'react-redux';
 
 export default function MovieCard(props) {
   const navigation = useNavigation();
-   const dispatch = useDispatch()
- 
-    const favorites = useSelector((state) => state.fav);
-
+  const dispatch = useDispatch();
+  const favorites = useSelector((state) => state.fav);
 
   const isFav = favorites.some((m) => m.id === props.id);
 
-const toggleFavorite = () => {
-  const updated = isFav
-    ? favorites.filter((m) => m.id !== props.id)
-    : [...favorites, props];
-
-  dispatch(Fav(updated));
-};
+  const toggleFavorite = () => {
+    const updated = isFav
+      ? favorites.filter((m) => m.id !== props.id)
+      : [...favorites, props];
+    dispatch(Fav(updated));
+  };
 
   return (
-    <View style={{ padding: 10 }}>
-     <View style={styles.view1}>
-       <View style={styles.imageContainer}>  <Image style={styles.image}  resizeMode="cover" source={{ uri: props.poster_path }} />
-       </View>
-      <View style={styles.view2}>
-        <Text style={styles.text}>{props.title}</Text>
-      <Text style={styles.text2}>{props.release_date}</Text>
-      <View style={styles.ratingContainer}><AntDesign name="star" size={24} color="yellow"style={styles.rating} /> {props.vote_average}</View>
-   <View style={styles.iconRow}>
-  <AntDesign name="like2" size={24} color="green" />
-  <TouchableOpacity onPress={toggleFavorite}>
-    <AntDesign name={isFav ? "heart" : "hearto"} size={24} color="red" />
-  </TouchableOpacity>
-</View>
-      {props.id && (
-  <TouchableOpacity
-    style={styles.button}
-    onPress={() => navigation.navigate("MovieDetalis", { id: props.id })}
-  >
-    <Text style={styles.buttonText}>View Details</Text>
-  </TouchableOpacity>
-)}
+    <View style={styles.container}>
+      <View style={styles.card}>
+        <Image 
+          style={styles.poster} 
+          resizeMode="cover" 
+          source={{ uri: props.poster_path }} 
+        />
+
+        <View style={styles.content}>
+          <Text style={styles.title} numberOfLines={2}>{props.title}</Text>
+          <Text style={styles.releaseDate}>{props.release_date}</Text>
+          
+          <View style={styles.ratingContainer}>
+            <AntDesign name="star" size={20} color="#FFD700" />
+            <Text style={styles.ratingText}>{props.vote_average}</Text>
+          </View>
+          
+          <View style={styles.actionsRow}>
+            <TouchableOpacity style={styles.actionButton}>
+              <AntDesign name="like2" size={22} color="#2ecc71" />
+            </TouchableOpacity>
+            
+            <TouchableOpacity onPress={toggleFavorite} style={styles.actionButton}>
+              <AntDesign 
+                name={isFav ? "heart" : "hearto"} 
+                size={22} 
+                color={isFav ? "#e74c3c" : "#7f8c8d"} 
+              />
+            </TouchableOpacity>
+          </View>
+          
+          {props.id && (
+            <TouchableOpacity
+              style={styles.detailsButton}
+              onPress={() => navigation.navigate("MovieDetalis", { id: props.id })}
+            >
+              <Text style={styles.detailsButtonText}>View Details</Text>
+              <AntDesign name="arrowright" size={16} color="#fff" />
+            </TouchableOpacity>
+          )}
+        </View>
       </View>
-     
-     </View>
-     
-      
     </View>
   );
 }
 
-
 const styles = StyleSheet.create({
   container: {
-    padding: 16,
-    backgroundColor: '#f9f9f9',
+    paddingHorizontal: 12,
+    paddingVertical: 8,
   },
-
-  image: {
-    width: 200,
-    height: 300,
-    borderRadius: 12,
-    marginBottom: 12,
-   
-  },
-
-  rating: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    display:"inlineBolock"
-
-  },
-ratingContainer:{
-    display:"flex",
-    flexDirection:"row"
-}
-,
-  overview: {
-    fontStyle: 'italic',
-    color: '#555',
-    fontSize: 14,
-  },
-
-  view1: {
-    width: '100%',
+  card: {
     flexDirection: 'row',
-    gap: 12,
-    padding: 12,
-    borderRadius: 12,
-    backgroundColor: '#fff',
-    elevation: 3,
+    backgroundColor: '#8a4e9cff',
+    borderRadius: 20,
+    overflow: 'hidden',
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
-    marginBottom: 10,
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.15,
+    shadowRadius: 6,
+    elevation: 5,
   },
-
-  view2: {
+  poster: {
+    width: 200,
+    height: 250,
+    borderTopLeftRadius: 20,
+    borderBottomLeftRadius: 20,
+    objectFit:'fill'
+  },
+  content: {
     flex: 1,
-    flexDirection: 'column',
-    gap: 6,
-    justifyContent: 'center',
+    padding: 12,
+    justifyContent: 'space-between',
   },
-
-  text: {
+  title: {
+    fontSize: 18,
     fontWeight: '700',
-    fontSize: 16,
-    color: '#2c3e50',
+    color: '#fff',
+    marginBottom: 6,
   },
-
-  text2: {
-    fontWeight: '600',
+  releaseDate: {
     fontSize: 13,
-    color: '#7f8c8d',
-  },
-
-  button: {
-    width: 160,
-    backgroundColor: '#3498db',
-    paddingVertical: 12,
-    borderRadius: 8,
-    alignItems: 'center',
-    marginTop: 8,
+    color: '#b3c1c2ff',
     marginBottom: 8,
   },
-
-  buttonText: {
-    color: 'white',
-    fontWeight: '600',
-    fontSize: 16,
+  ratingContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
   },
-  iconRow: {
-  flexDirection: 'row',
-  gap: 10,
-  alignItems: 'center',
-}
+  ratingText: {
+    marginLeft: 6,
+    fontSize: 15,
+    fontWeight: '600',
+    color: '#f39c12',
+  },
+  actionsRow: {
+    flexDirection: 'row',
+    marginBottom: 12,
+  },
+  actionButton: {
+    marginRight: 16,
+    padding: 6,
+    borderRadius: 50,
+    backgroundColor: '#ecf0f1',
+  },
+  detailsButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#9b5dadff',
+    paddingVertical: 10,
+    borderRadius: 30,
+    paddingHorizontal: 16,
+    alignSelf: 'flex-start',
+  },
+  detailsButtonText: {
+    color: '#fff',
+    fontWeight: '600',
+    fontSize: 14,
+    marginRight: 8,
+  },
 });
-
