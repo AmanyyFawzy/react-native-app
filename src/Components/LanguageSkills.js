@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from "react-native";
 import * as Progress from "react-native-progress";
 
-export default function Languages() {
+export default function LanguagesSkills() {
   const langs = [
     { name: "Arabic", progress: 1 },
     { name: "English", progress: 0.7 },

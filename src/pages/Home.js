@@ -16,7 +16,7 @@ const styles = {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    background:'#703681ff',
+    background:'#1B3C53',
     padding: 20,
   },
   title: {

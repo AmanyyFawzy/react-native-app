@@ -114,7 +114,7 @@ function Animate() {
             style={[
               styles.buttonText,
               hovered && {
-                color: "#1e3c72",
+                color: "#1B3C53",
               },
             ]}
           >
@@ -131,7 +131,7 @@ export default Animate;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#703681ff", 
+    backgroundColor: "#456882", 
     alignItems: "center",
     justifyContent: "center",
     padding: 20,
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
     width: 110,
     height: 110,
     borderRadius: 55,
-    backgroundColor: "#ff9800",
+    backgroundColor: "#D2C1B6",
     justifyContent: "center",
     alignItems: "center",
     shadowColor: "#000",
@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
   view2: {
-    backgroundColor: "#9b5dadff",
+    backgroundColor: "#7694acff",
     paddingHorizontal: 18,
     height: 40,
     borderRadius: 20,
@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
   welcomeText: {
-    marginTop: 50,
+    marginTop: 70,
     alignItems: "center",
   },
   text3: {
@@ -192,12 +192,12 @@ const styles = StyleSheet.create({
   },
   button: {
     width: 180,
-    backgroundColor: "#9b5dadff",
+    backgroundColor: "#7694acff",
     paddingVertical: 12,
     borderRadius: 30,
     alignItems: "center",
     borderWidth: 1,
-    borderColor: "#9b5dadff",
+    borderColor: "#7694acff",
   },
   buttonText: {
     fontSize: 18,

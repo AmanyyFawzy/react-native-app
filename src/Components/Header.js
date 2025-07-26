@@ -3,10 +3,10 @@ import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import AntDesign from "@expo/vector-icons/AntDesign";
 
-export default function ProfileHeader() {
+export default function Header() {
   return (
     <View style={styles.container}>
-      <Image source={require("../assets/user-default.png")} style={styles.profileImg} />
+      <Image source={require("../../assets/user-default.png")} style={styles.profileImg} />
       <Text style={styles.title}>Amany Fawzy</Text>
       <Text style={styles.subTitle}>Front End Developer</Text>
       <View style={styles.iconsContainer}>

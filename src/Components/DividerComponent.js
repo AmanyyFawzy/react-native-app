@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 
-export default function Divider() {
+export default function DividerComponent() {
   return (
     <>
       <View style={styles.divider}></View>

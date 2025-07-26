@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   },
   card: {
     flexDirection: 'row',
-    backgroundColor: '#8a4e9cff',
+    backgroundColor: '#456882',
     borderRadius: 20,
     overflow: 'hidden',
     shadowColor: '#000',
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#9b5dadff',
+    backgroundColor: '#6788a1f8',
     paddingVertical: 10,
     borderRadius: 30,
     paddingHorizontal: 16,
